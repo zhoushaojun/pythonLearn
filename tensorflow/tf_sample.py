@@ -15,7 +15,7 @@ y = tf.matmul(a, W2)
 cross_entropy = -tf.reduce_mean(y_ * tf.log(tf.clip_by_value(y, 1e-10, 1.0)))
 train_step = tf.train.AdamOptimizer(0.001).minimize(cross_entropy)
 
-dataSize_size = 128
+gdataSize_size = 128
 X_input = np.random.rand(dataSize_size, 2)
 Y = [[int(x1 + x2 < 1)] for (x1, x2) in X_input]
 
