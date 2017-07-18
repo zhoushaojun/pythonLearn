@@ -1,0 +1,11 @@
+import tensorflow as tf
+import numpy as np
+
+
+transArray= np.arange(24).reshape((3,2,4))
+transArray = tf.concat(1,transArray)
+
+with tf.Session() as sess:
+    init = tf.global_variables_initializer()
+    sess.run(init)
+    print(transArray)
