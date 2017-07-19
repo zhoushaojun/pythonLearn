@@ -55,7 +55,7 @@ def RNN(X, weights, biases):
     ##########################################
 
     # basic LSTM Cell.
-    cell = tf.nn.rnn_cell.BasicLSTMCell(n_hidden_units, forget_bias=1.0, state_is_tuple=True)
+    cell = tf.contrib.rnn.BasicLSTMCell(n_hidden_units, forget_bias=1.0, state_is_tuple=True)
     # lstm cell is divided into two parts (c_state, h_state)
     init_state = cell.zero_state(batch_size, dtype=tf.float32)
 
@@ -76,7 +76,7 @@ def RNN(X, weights, biases):
     # # or
     # unpack to list [(batch, outputs)..] * steps
 
-    outputs = tf.unpack(tf.transpose(outputs, [1, 0, 2]))    # states is the last outputs
+    outputs = tf.transpose(outputs, [1, 0, 2])   # states is the last outputs
     results = tf.matmul(outputs[-1], weights['out']) + biases['out']    # shape = (128, 10)
     print(outputs[-1])
     print(final_state)
